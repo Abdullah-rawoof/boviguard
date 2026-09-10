@@ -1,0 +1,132 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 1.5rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.chartGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .chartGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chartCard {
+  background: #fff;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+  padding: 1.5rem;
+}
+
+.chartTitle {
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-bottom: var(--border-thick);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Mock Bar Chart */
+.barChart {
+  display: flex;
+  height: 250px;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-bottom: var(--border-thick);
+  border-left: var(--border-thick);
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.bar {
+  width: 100%;
+  background: var(--accent-amber);
+  border: var(--border-thick);
+  border-bottom: none;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.bar:hover {
+  background: var(--accent-red);
+  transform: translateY(-5px);
+}
+
+.barValue {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.barLabel {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* Hotspots list */
+.hotspotList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hotspotItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-primary);
+  border: var(--border-thick);
+  box-shadow: 3px 3px 0px #000;
+  font-weight: 800;
+}
+
+.hotspotDanger {
+  background: var(--accent-red);
+  color: #fff;
+}
+
+.hotspotWarn {
+  background: var(--accent-amber);
+}
+
+.hotspotMetric {
+  font-size: 1.25rem;
+  font-weight: 900;
+}

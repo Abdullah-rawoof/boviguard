@@ -1,0 +1,145 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 1.5rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.searchBar {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .searchBar {
+    width: 400px;
+  }
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: var(--border-thick);
+  font-size: 1.1rem;
+  font-family: inherit;
+  font-weight: 700;
+  box-shadow: inset 3px 3px 0px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: var(--accent-blue);
+}
+
+.searchBtn {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-blue);
+  color: #fff;
+  border: var(--border-thick);
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px #000;
+  white-space: nowrap;
+}
+
+.searchBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+.tableContainer {
+  background: #fff;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-brutal);
+  overflow-x: auto;
+}
+
+.alertTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.alertTable th {
+  padding: 1.25rem 1rem;
+  background: var(--bg-primary);
+  border-bottom: var(--border-thick);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.alertTable td {
+  padding: 1.25rem 1rem;
+  border-bottom: var(--border-thin);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.alertRow {
+  transition: background 0.1s;
+}
+
+.alertRow:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.badge {
+  padding: 0.25rem 0.5rem;
+  border: 2px solid #000;
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.badgeCritical {
+  background: var(--accent-red);
+  color: #fff;
+}
+
+.badgeWarning {
+  background: var(--accent-amber);
+  color: #000;
+}
+
+.actionBtn {
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #000;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+.actionBtn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px #000;
+}
