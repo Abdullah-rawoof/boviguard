@@ -16,8 +16,6 @@ export default function Dashboard() {
   const [isModelLoading, setIsModelLoading] = useState(true);
   const [gpsLocation, setGpsLocation] = useState(null);
   
-  const [audioCtx, setAudioCtx] = useState(null);
-  const [sirenInterval, setSirenInterval] = useState(null);
   const modelRef = useRef(null);
   const requestRef = useRef(null);
 
@@ -87,12 +85,12 @@ export default function Dashboard() {
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current);
       }
-      setIsAlarmSounding(false);
     }
     
     return () => {
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isActive]);
 
   const toggleSystem = () => {
@@ -112,16 +110,20 @@ export default function Dashboard() {
       }
     } else {
       setGpsLocation(null);
+      setIsAlarmSounding(false);
     }
     
     setIsActive(!isActive);
   };
 
+  const sirenIntervalRef = useRef(null);
+  const audioCtxRef = useRef(null);
+
   useEffect(() => {
     if (isAlarmSounding && isActive) {
-      if (!audioCtx) {
+      if (!audioCtxRef.current) {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        setAudioCtx(ctx);
+        audioCtxRef.current = ctx;
         
         const interval = setInterval(() => {
           const osc = ctx.createOscillator();
@@ -142,19 +144,19 @@ export default function Dashboard() {
           osc.stop(ctx.currentTime + 0.5);
         }, 600);
         
-        setSirenInterval(interval);
+        sirenIntervalRef.current = interval;
       }
     } else {
-      if (sirenInterval) {
-        clearInterval(sirenInterval);
-        setSirenInterval(null);
+      if (sirenIntervalRef.current) {
+        clearInterval(sirenIntervalRef.current);
+        sirenIntervalRef.current = null;
       }
-      if (audioCtx) {
-        audioCtx.close();
-        setAudioCtx(null);
+      if (audioCtxRef.current) {
+        audioCtxRef.current.close();
+        audioCtxRef.current = null;
       }
     }
-  }, [isAlarmSounding, isActive, audioCtx, sirenInterval]);
+  }, [isAlarmSounding, isActive]);
 
   return (
     <>
